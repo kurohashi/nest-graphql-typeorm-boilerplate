@@ -1,0 +1,3 @@
+extend type Mutation {
+    addItemToOrder(cartId: UUID!, paymentMode: String!): Order!
+}

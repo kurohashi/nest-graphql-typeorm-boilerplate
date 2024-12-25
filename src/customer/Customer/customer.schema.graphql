@@ -1,0 +1,28 @@
+scalar DateTime
+scalar UUID
+
+extend type Mutation {
+  addIntegratedOutlet(row: OutletInput!): Outlet!
+  # addInegratedAddress(row: AddressInput!): Address!
+  setCuisines(outlet_id: String!, rows: [CuisineInput]!): Boolean!
+}
+
+type OutletCuisines {
+  id (equal: UUID, notEqual: UUID, in: [UUID], notIn: [UUID], isNull: Boolean): UUID
+  created_at (greaterThan: DateTime, lesserThan: DateTime, greaterEqual: DateTime, lesserEqual: DateTime, isNull: Boolean): DateTime
+  updated_at (greaterThan: DateTime, lesserThan: DateTime, greaterEqual: DateTime, lesserEqual: DateTime, isNull: Boolean): DateTime
+  outlet_id (equal: UUID, notEqual: UUID, in: [UUID], notIn: [UUID], isNull: Boolean): UUID
+  cuisine_id (equal: UUID, notEqual: UUID, in: [UUID], notIn: [UUID], isNull: Boolean): UUID
+  outlet: Outlet
+  cuisine: Cuisine
+}
+
+input OutletCuisinesInput {
+  id : UUID
+  created_at : DateTime
+  updated_at : DateTime
+  outlet_id : UUID
+  cuisine_id : UUID
+  outlet : OutletInput
+  cuisine : CuisineInput
+}
